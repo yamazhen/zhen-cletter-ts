@@ -5,11 +5,18 @@
 	"author": "yamazhen",
 	"type": "module",
 	"main": "dist/index.js",
+	"bin": {
+		"cletter": "dist/index.js"
+	},
 	"license": "ISC",
 	"scripts": {
 		"build": "tsc",
-		"start": "node dist/index.js",
-		"dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/index.ts"
+		"start": "tsc && node dist/index.js",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/index.ts",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint src/**/*.ts",
+		"lint:fix": "eslint src/**/*.ts --fix",
+		"clean": "rm -r ./dist"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.33.0",
