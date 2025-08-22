@@ -23,16 +23,21 @@
 		"@tsconfig/node20": "^20.1.6",
 		"@tsconfig/strictest": "^2.0.5",
 		"@types/pdfkit": "^0.17.2",
+		"dotenv": "^17.2.1",
 		"eslint": "^9.33.0",
 		"globals": "^16.3.0",
 		"jiti": "^2.5.1",
+		"tsx": "^4.20.4",
 		"typescript-eslint": "^8.39.1"
 	},
 	"dependencies": {
+		"@google/genai": "^1.15.0",
 		"@types/node": "^24.3.0",
+		"@types/pdf-parse": "^1.1.5",
 		"commander": "^14.0.0",
 		"D": "^1.0.0",
 		"inquirer": "^12.9.2",
+		"pdf-parse": "^1.1.1",
 		"pdfkit": "^0.17.1"
 	}
 }
