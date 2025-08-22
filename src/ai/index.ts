@@ -67,10 +67,35 @@ based on the research.
 5. Includes proper formatting with my contact
 info at the top.
 6. Keep it one page and not too long.
-7. Add "# " for headers (like "# Dear Hiring Manager," or "# Sincerely,")
+7. Add "# " for headers (like "# Dear Hiring Manager,"
+or "# Sincerely,")
+8. Add "@ " prefix to each line of contact information
+at the top for better formatting
+9. Only include contact information at the very top
+of the letter - do NOT repeat it after "Sincerely,"
+or anywhere else in the letter
+10. IMPORTANT: Add actual line breaks between sections:
+   - Line break after each contact info line
+   - Line break after the date
+   - Line break between paragraphs
+   - Line break before and after headers
+11. Format exactly like this example:
+@ FULL NAME
+@ PHONE NUMBER
+@ EMAIL
+@ WEBSITE
 
-Generate the complete letter with no
-placeholders or template markers.
+DATE
+
+# Dear Hiring Manager,
+
+First paragraph here.
+
+Second paragraph here.
+
+# Sincerely,
+
+NAME
 `;
 
 	const response = await ai.models.generateContent({

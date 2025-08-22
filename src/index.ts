@@ -70,7 +70,7 @@ try {
 		const lines = content.replace(/\\n/g, "\n").split("\n");
 		const regularFont = lang === "kr" ? "NotoSansCJKkr-Regular" : "Helvetica";
 		const boldFont =
-			language === "kr" ? "NotoSansCJKkr-Bold" : "Helvetica-Bold";
+			lang === "kr" ? "NotoSansCJKkr-Bold" : "Helvetica-Bold";
 		lines.forEach((line, index) => {
 			if (line.trim() === "") {
 				doc.moveDown();
@@ -78,6 +78,10 @@ try {
 				const headerText = line.substring(2);
 				doc.font(boldFont).fontSize(12).fillColor("black").text(headerText);
 				if (index < lines.length - 1) doc.moveDown(0.3);
+			} else if (line.startsWith("@ ")) {
+				const contactText = line.substring(2);
+				doc.font(boldFont).fontSize(9).fillColor("#444444").text(contactText);
+				if (index < lines.length - 1) doc.moveDown(0.2);
 			} else {
 				doc.font(regularFont).fontSize(10).fillColor("black").text(line);
 				if (index < lines.length - 1) doc.moveDown(0.5);
