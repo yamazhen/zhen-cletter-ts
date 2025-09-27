@@ -54,7 +54,10 @@ try {
 		CONFIG.RESUME_PATH,
 		language,
 	);
-	const outputFileName = company.replace(/[^a-zA-Z0-9_-]/g, "");
+	const outputFileName = company.replace(
+		/[^a-zA-Z0-9_-\u3131-\u3163\uAC00-\uD7A3]/g,
+		"",
+	);
 
 	function generatePDF(content: string, lang: "en" | "kr") {
 		const outputDir = path.join(CONFIG.OUTPUT_BASE, lang);
@@ -68,22 +71,30 @@ try {
 		doc.registerFont("NotoSansCJKkr-Bold", CONFIG.FONT_PATH_BOLD);
 
 		const lines = content.replace(/\\n/g, "\n").split("\n");
-		const regularFont = lang === "kr" ? "NotoSansCJKkr-Regular" : "Helvetica";
-		const boldFont =
-			lang === "kr" ? "NotoSansCJKkr-Bold" : "Helvetica-Bold";
+		const regularFont = "NotoSansCJKkr-Regular";
+		const boldFont = "NotoSansCJKkr-Bold";
 		lines.forEach((line, index) => {
 			if (line.trim() === "") {
 				doc.moveDown();
 			} else if (line.startsWith("# ")) {
 				const headerText = line.substring(2);
-				doc.font(boldFont).fontSize(12).fillColor("black").text(headerText);
+				doc.font(boldFont)
+					.fontSize(12)
+					.fillColor("black")
+					.text(headerText);
 				if (index < lines.length - 1) doc.moveDown(0.3);
 			} else if (line.startsWith("@ ")) {
 				const contactText = line.substring(2);
-				doc.font(boldFont).fontSize(9).fillColor("#444444").text(contactText);
+				doc.font(boldFont)
+					.fontSize(9)
+					.fillColor("#444444")
+					.text(contactText);
 				if (index < lines.length - 1) doc.moveDown(0.2);
 			} else {
-				doc.font(regularFont).fontSize(10).fillColor("black").text(line);
+				doc.font(regularFont)
+					.fontSize(10)
+					.fillColor("black")
+					.text(line);
 				if (index < lines.length - 1) doc.moveDown(0.5);
 			}
 		});
